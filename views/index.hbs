@@ -1,0 +1,28 @@
+<h1>Blog Importer</h1>
+<p>Hello!</p>
+
+<form method="post" action="/submit">
+
+  <div class="inputGroup">
+    <label class="inputLabel" for="storeUrl">Store URL:</label>
+    <input type="text" id="storeUrl" name="storeUrl" placeholder="e.g., store.com">
+  </div>
+
+  <div class="inputGroup">
+    <label class="inputLabel" for="apiUsername">API Username:</label>
+    <input type="text" id="apiUsername" name="apiUsername">
+  </div>
+  
+  <div class="inputGroup">
+    <label class="inputLabel" for="apiToken">API Token:</label>
+    <input type="text" id="apiToken" name="apiToken">
+  </div>
+
+  <input type="file" name="fileInput" id="fileInput" accept=".csv">
+  
+  <input type="submit" value="Import">
+
+  <input type="textarea" name="fileDisplayArea" id="fileDisplayArea">
+ 
+</form>
+

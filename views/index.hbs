@@ -1,8 +1,12 @@
-<h1>Blog Importer</h1>
-<p>Hello!</p>
 
-<form method="post" action="/submit">
+<section>
+  <h2>Hello World!</h2>
 
+  <p>This tool reads blog posts from a CSV file and imports them into a BigCommerce store. This tool is a learning project for me and as such can only create one blog post at the moment. More robust functionality is planned for the future!</p>
+</section>
+
+<form class="formGroup" method="post" action="/submit">
+  <h2>Import Blog Post</h2>
   <div class="inputGroup">
     <label class="inputLabel" for="storeUrl">Store URL:</label>
     <input type="text" id="storeUrl" name="storeUrl" placeholder="e.g., store.com">
@@ -18,11 +22,13 @@
     <input type="text" id="apiToken" name="apiToken">
   </div>
 
+  <label class="inputLabel" for="fileInput">Upload CSV:</label>
   <input type="file" name="fileInput" id="fileInput" accept=".csv">
-  
-  <input type="submit" value="Import">
 
-  <input type="textarea" name="fileDisplayArea" id="fileDisplayArea">
- 
+  <label class="inputLabel" for="fileDisplayArea">Data Preview</label>
+  <textarea type="textarea" name="fileDisplayArea" id="fileDisplayArea"></textarea>
+  
+  <input type="submit" class="importBtn" value="Import Blog Post">
+
 </form>
 

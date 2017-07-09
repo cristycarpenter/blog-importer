@@ -16,7 +16,8 @@ window.onload = function() {
         //console.log(csvString);
         parsedCsvString = Papa.parse(csvString, {header: true});
         console.log(parsedCsvString);
-        fileDisplayArea.value = JSON.stringify(parsedCsvString.data[0]).toLowerCase();
+        let blogPostsArray = JSON.stringify(parsedCsvString.data);
+        fileDisplayArea.value = blogPostsArray;
       }
       reader.readAsText(file);  
     } else {

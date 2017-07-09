@@ -9,42 +9,52 @@ router.get('/', (req, res) => {
 
 /* Send POST Request */
 router.post('/submit', (req, res) => {
-  let storeUrl = req.body.storeUrl;
-  let apiUsername = req.body.apiUsername;
-  let apiToken = req.body.apiToken;
-  let blogPost = req.body.fileDisplayArea;
-  let encode1 = apiUsername + ":" + apiToken;
-  let encode2 = new Buffer(encode1).toString('base64');
-  let credentials = "Basic" + " " + encode2;
-  let options = {
-	    host: storeUrl,
-	    path: '/api/v2/blog/posts',
-	    method: 'POST',
-	    headers: {
-	        'Content-Type': 'application/json',
-	        'Authorization': credentials,
-	        'Accept': 'application/json'
-	    },
-	};
 
-	https.request(options, function (response) {
-	    body = '';
-	    response.on('data', function (chunk) {
-	        body += chunk;
-	    });
-	    response.on('end', function () {
-	        console.log(res.statusCode);
-	        console.log(body);
-	        results = body.replace(/[\]\[\"\"\{\}]/g, '')
-	        res.render('index', {body:results})
-	    });
+	 let blogPosts = JSON.parse(req.body.fileDisplayArea);
+	 
 
-	})
-	.end(blogPost);
+	for (var i = 0; i < blogPosts.length; i++) {
+    		
+    	  console.log(blogPosts[i]); //test array
 
-  console.log(storeUrl);
-  console.log(apiUsername);
-  console.log(apiToken);
+    	  let storeUrl = req.body.storeUrl;
+		  let apiUsername = req.body.apiUsername;
+		  let apiToken = req.body.apiToken;
+		  let blogPost = JSON.stringify(blogPosts[i]);
+		  let encode1 = apiUsername + ":" + apiToken;
+		  let encode2 = new Buffer(encode1).toString('base64');
+		  let credentials = "Basic" + " " + encode2;
+		  let options = {
+			    host: storeUrl,
+			    path: '/api/v2/blog/posts',
+			    method: 'POST',
+			    headers: {
+			        'Content-Type': 'application/json',
+			        'Authorization': credentials,
+			        'Accept': 'application/json'
+			    },
+			};
+
+			https.request(options, function (response) {
+			    body = '';
+			    response.on('data', function (chunk) {
+			        body += chunk;
+			    });
+			    response.on('end', function () {
+			        console.log(res.statusCode);
+			        console.log(body);
+			        results = body.replace(/[\]\[\"\"\{\}]/g, '')
+			        res.render('index', {body:results})
+			    });
+
+			})
+			.end(blogPost);
+
+		  console.log(storeUrl);
+		  console.log(apiUsername);
+		  console.log(apiToken);
+
+	}
 
 });
 

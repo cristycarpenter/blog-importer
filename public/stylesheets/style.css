@@ -97,11 +97,21 @@ footer {
 	min-height: 125px;
 }
 
-.tagline{
+.logo {
+	margin: 0 auto;
+	display: block;
+}
+
+.tagline {
 	color: #fff;
 	text-align: center;
 	margin-top: 7px;
 }
+.bigcommerce {
+	color:#4E75F8;
+	text-decoration: none;
+}
+
 
 /* Home Styles*/
 
@@ -144,3 +154,4 @@ footer {
 .importBtn:hover{	
 	background-color: #3E918F;
 }
+
